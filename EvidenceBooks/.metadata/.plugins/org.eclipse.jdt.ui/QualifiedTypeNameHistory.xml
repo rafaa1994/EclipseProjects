@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="javax.swing.border.Border"/>
-<fullyQualifiedTypeName name="javax.swing.border.LineBorder"/>
-<fullyQualifiedTypeName name="org.apache.poi.xssf.usermodel.XSSFCellStyle"/>
-<fullyQualifiedTypeName name="java.awt.Color"/>
-<fullyQualifiedTypeName name="org.apache.poi.xssf.usermodel.XSSFColor"/>
-<fullyQualifiedTypeName name="org.apache.poi.ss.usermodel.IndexedColors"/>
-</qualifiedTypeNameHistroy>
