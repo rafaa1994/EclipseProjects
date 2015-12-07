@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="img"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="E:/Downloads/GDysk/PROGRAMMING/Libraries/swingx-1.6.1.jar"/>
+	<classpathentry kind="lib" path="E:/Downloads/GDysk/PROGRAMMING/Libraries/xmlbeans.jar"/>
+	<classpathentry kind="lib" path="E:/Downloads/GDysk/PROGRAMMING/Libraries/joda-time-2.8.2/joda-time-2.8.2.jar"/>
+	<classpathentry kind="lib" path="E:/Downloads/GDysk/PROGRAMMING/Libraries/commons-lang3-3.4/commons-lang3-3.4.jar"/>
+	<classpathentry kind="lib" path="E:/Downloads/GDysk/PROGRAMMING/Libraries/poi-3.12/poi-3.12-20150511.jar"/>
+	<classpathentry kind="lib" path="E:/Downloads/GDysk/PROGRAMMING/Libraries/poi-3.12/poi-examples-3.12-20150511.jar"/>
+	<classpathentry kind="lib" path="E:/Downloads/GDysk/PROGRAMMING/Libraries/poi-3.12/poi-excelant-3.12-20150511.jar"/>
+	<classpathentry kind="lib" path="E:/Downloads/GDysk/PROGRAMMING/Libraries/poi-3.12/poi-ooxml-3.12-20150511.jar"/>
+	<classpathentry kind="lib" path="E:/Downloads/GDysk/PROGRAMMING/Libraries/poi-3.12/poi-ooxml-schemas-3.12-20150511.jar"/>
+	<classpathentry kind="lib" path="E:/Downloads/GDysk/PROGRAMMING/Libraries/poi-3.12/poi-scratchpad-3.12-20150511.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
