@@ -43,9 +43,9 @@ public class ExcelHandler {
 			excel.addBookToExcel(excel.getArrayListBook().get(i),path);	
 	}
 	
-	public String fillInfo(String str1,String str2,String str3,String str4,String str5,String str6,String str7,String str8,String path) throws IOException{
+	public String fillInfo(String str1,String str2,String str3,String str4,String str5,String str6,String str7,String str8,String str9,String path) throws IOException{
 		
-		String message = excel.fillInfo(str1,str2,str3,str4,str5, str6,str7, str8,path);
+		String message = excel.fillInfo(str1,str2,str3,str4,str5, str6,str7, str8, str9, path);
 		return message;
 	}
 	

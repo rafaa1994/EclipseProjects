@@ -11,6 +11,7 @@ public class Book {
 	private String authors = new String();
 	private String publisher = new String();
 	private String isbn_code = new String();
+	private String permission_nr = new String();
 	private int amount_of_books = 0;
 	private double price = 0;
 	
@@ -36,6 +37,9 @@ public class Book {
 	}
 	String getISBN(){
 		return isbn_code;
+	}
+	String getPersmission_NR(){
+		return permission_nr;
 	}
 	int getAmountOfBooks(){
 		return amount_of_books;
@@ -74,6 +78,9 @@ public class Book {
 	void setPrice(double arg0){
 		price = arg0;
 	}
+	void setPersmission_NR(String arg0){
+		permission_nr = arg0;
+	}
 
 public String toStringParsing(){
 	String pom = "";
@@ -87,7 +94,8 @@ public String toStringParsing(){
 			"Wydawnictwo: " + publisher + "\n" +
 			"Iloœæ: " + amount_of_books + "szt.\n" +
 			"Cena: " + price + "z³\n" +
-			"ISBN: " + isbn_code + "\n\n"+
+			"ISBN: " + isbn_code + "\n"+
+			"Nr dopuszczenia: " + permission_nr + "\n\n"+
 			"( Wycena )\n"+
 			"75% - " + price*75/100 + "z³ [Stan: 5-/5 oraz 2 i 3 LO rozszerzenia]\n" +
 			"80% - " + price*80/100 + "z³ [Specjalistyczne]\n" +
@@ -97,7 +105,7 @@ public String toStringParsing(){
 	return pom;
 }
 public boolean checkItHasValue(){
-	if(title == "" /*|| class1 == 0 */|| school == "" ||
+	if(title == "" /*|| class1 == 0 */|| school == "" || permission_nr == "" ||
 			level == ""|| authors == "" || publisher == "" || 
 			isbn_code == "" || amount_of_books == -1 || price == 0) return false;
 	else return true;

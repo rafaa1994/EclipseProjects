@@ -103,6 +103,10 @@ public class ExcelConnector {
 							break;
 						case 6:
 							book.setISBN(formatter.formatCellValue(cell));
+							break;
+						case 7:
+							book.setPersmission_NR(formatter.formatCellValue(cell));
+							break;
 						default:
 							break;
 						}
@@ -244,7 +248,7 @@ public class ExcelConnector {
 	@SuppressWarnings("null")
 	public String fillInfo(String title, String level, String authors,
 			String publisher, String amount, String price, String ISBN,
-			String school, String path) throws IOException {
+			String school,String permission_NR, String path) throws IOException {
 
 		String message = new String();
 		book = new Book();
@@ -255,6 +259,7 @@ public class ExcelConnector {
 		book.setAmountOfBooks(Integer.parseInt(amount));
 		book.setPrice(Double.parseDouble(price));
 		book.setISBN(ISBN);
+		book.setPersmission_NR(permission_NR);
 
 		if (!book.checkItHasValue())
 			return message = "Brakuje danych";
@@ -274,7 +279,7 @@ public class ExcelConnector {
 			System.out.println("by³ i zobaczy³");
 
 			row = sheet.createRow(0);
-			for (int j = 0; j < 7; j++) {
+			for (int j = 0; j < 8; j++) {
 				cell = row.createCell(j);
 				switch (j) {
 
@@ -306,6 +311,9 @@ public class ExcelConnector {
 					cell.setCellValue("ISBN");
 					sheet.autoSizeColumn(6);
 					break;
+				case 7:
+					cell.setCellValue("Nr dopuszczenia");
+					sheet.autoSizeColumn(7);
 				default:
 					break;
 				}
@@ -338,7 +346,7 @@ public class ExcelConnector {
 		if (!found) {
 			row = sheet.createRow(sheet.getPhysicalNumberOfRows());
 			XSSFCellStyle cellStyle = changeCellStyle(workbook, book.getAmountOfBooks());
-			for (int j = 0; j < 7; j++) {
+			for (int j = 0; j < 8; j++) {
 				cell = row.createCell(j);
 				cell.setCellStyle(cellStyle);
 				switch (j) {
@@ -371,6 +379,10 @@ public class ExcelConnector {
 				case 6:
 					cell.setCellValue(book.getISBN());
 					sheet.autoSizeColumn(6);
+					break;
+				case 7:
+					cell.setCellValue(book.getPersmission_NR());
+					sheet.autoSizeColumn(7);
 					break;
 				default:
 					break;
@@ -436,7 +448,7 @@ public class ExcelConnector {
 			sheet = workbook.createSheet(WorkbookUtil
 					.createSafeSheetName("Raport " + RaportDate));
 			row = sheet.createRow(0);
-			for (int j = 0; j < 6; j++) {
+			for (int j = 0; j < 7; j++) {
 				cell = row.createCell(j);
 				switch (j) {
 
@@ -465,8 +477,12 @@ public class ExcelConnector {
 					sheet.autoSizeColumn(4);
 					break;
 				case 5:
-					cell.setCellValue("Godzina");
+					cell.setCellValue("Nr dopuszczenia");
 					sheet.autoSizeColumn(5);
+					break;
+				case 6:
+					cell.setCellValue("Godzina");
+					sheet.autoSizeColumn(6);
 					break;
 				default:
 					break;
@@ -480,7 +496,7 @@ public class ExcelConnector {
 		for (int i = 0; i < books.size(); i++) {
 			if(books.get(i).getAmountOfBooks() == 0) continue;
 			row = sheet.createRow(sheet.getPhysicalNumberOfRows());
-			for (int j = 0; j < 6; j++) {
+			for (int j = 0; j < 7; j++) {
 				cell = row.createCell(j);
 				switch (j) {
 
@@ -509,9 +525,12 @@ public class ExcelConnector {
 					sheet.autoSizeColumn(4);
 					break;
 				case 5:
+					cell.setCellValue(books.get(i).getPersmission_NR());
+					sheet.autoSizeColumn(5);
+				case 6:
 					cell.setCellValue(date.toDate().toString()
 							.substring(11, 16));
-					sheet.autoSizeColumn(5);
+					sheet.autoSizeColumn(6);
 					break;
 				default:
 					break;
