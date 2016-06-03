@@ -20,13 +20,16 @@ import org.joda.time.DateTime;
 public class ExcelConnector {
 
 	private ArrayList<Book> books = new ArrayList<Book>();
+	private ArrayList<Double> prices = new ArrayList<Double>();
 	private Book book = new Book();
 	private boolean changes;
 
 	public ArrayList<Book> getArrayListBook() {
 		return books;
 	}
-
+	public ArrayList<Double> getArrayPricesBook() {
+		return prices;
+	}
 	public boolean getChanges() {
 		return changes;
 	}
@@ -235,13 +238,25 @@ public class ExcelConnector {
 		return message;
 	}
 
-	public String printReceipt(Book book){//, int price) {
+	public String printReceipt(Book book, double price) {
 
 		String receipt = "Tytu³: " + book.getTitle() + 
 				"\n" + "Szko³a: " + book.getSchool() +
 				"\n" + "Autorzy: "+ book.getAuthors()+ 
-				"\n" + "Wydawnictwo: " + book.getPublisher() + "\n";//\t\t";
-
+				"\n" + "Wydawnictwo: " + book.getPublisher() + 
+				"\n" + "\t\t" + price + "z³" + "\n";
+		prices.add(price);
+		return receipt;
+	}
+	
+	public String calculateReceipt(){
+		double receiptCNT = 0;
+		for(double p : prices){
+			receiptCNT += p;
+		}
+		
+		String receipt = "\n" + "\t\tRazem: " + receiptCNT + "z³" + "\n";
+		
 		return receipt;
 	}
 
@@ -448,7 +463,7 @@ public class ExcelConnector {
 			sheet = workbook.createSheet(WorkbookUtil
 					.createSafeSheetName("Raport " + RaportDate));
 			row = sheet.createRow(0);
-			for (int j = 0; j < 7; j++) {
+			for (int j = 0; j < 8; j++) {
 				cell = row.createCell(j);
 				switch (j) {
 
@@ -468,21 +483,21 @@ public class ExcelConnector {
 					cell.setCellValue("Wydawnictwo");
 					sheet.autoSizeColumn(3);
 					break;
-			/*	case 4:
-					cell.setCellValue("Cena sprzeda¿y");
-					sheet.autoSizeColumn(4);
-					break;*/
 				case 4:
-					cell.setCellValue("ISBN");
+					cell.setCellValue("Cena sprzeda¿y");
 					sheet.autoSizeColumn(4);
 					break;
 				case 5:
-					cell.setCellValue("Nr dopuszczenia");
+					cell.setCellValue("ISBN");
 					sheet.autoSizeColumn(5);
 					break;
 				case 6:
-					cell.setCellValue("Godzina");
+					cell.setCellValue("Nr dopuszczenia");
 					sheet.autoSizeColumn(6);
+					break;
+				case 7:
+					cell.setCellValue("Godzina");
+					sheet.autoSizeColumn(7);
 					break;
 				default:
 					break;
@@ -496,7 +511,7 @@ public class ExcelConnector {
 		for (int i = 0; i < books.size(); i++) {
 			if(books.get(i).getAmountOfBooks() == 0) continue;
 			row = sheet.createRow(sheet.getPhysicalNumberOfRows());
-			for (int j = 0; j < 7; j++) {
+			for (int j = 0; j < 8; j++) {
 				cell = row.createCell(j);
 				switch (j) {
 
@@ -515,22 +530,23 @@ public class ExcelConnector {
 				case 3:
 					cell.setCellValue(books.get(i).getPublisher());
 					sheet.autoSizeColumn(3);
-					break;/*
+					break;
 				case 4:
 					cell.setCellValue(prices.get(i).intValue());
 					sheet.autoSizeColumn(4);
-					break;*/
-				case 4:
-					cell.setCellValue(books.get(i).getISBN());
-					sheet.autoSizeColumn(4);
 					break;
 				case 5:
-					cell.setCellValue(books.get(i).getPersmission_NR());
+					cell.setCellValue(books.get(i).getISBN());
 					sheet.autoSizeColumn(5);
+					break;
 				case 6:
+					cell.setCellValue(books.get(i).getPersmission_NR());
+					sheet.autoSizeColumn(6);
+					break;
+				case 7:
 					cell.setCellValue(date.toDate().toString()
 							.substring(11, 16));
-					sheet.autoSizeColumn(6);
+					sheet.autoSizeColumn(7);
 					break;
 				default:
 					break;

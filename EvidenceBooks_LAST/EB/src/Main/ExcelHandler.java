@@ -16,6 +16,11 @@ public class ExcelHandler {
 		excel.getArrayListBook().clear();
 		
 	}
+	public void clearArrayPricesBook(){
+		
+		excel.getArrayPricesBook().clear();
+		
+	}
 	
 	public ArrayList<Book> getArrayListBook(){
 		
@@ -27,8 +32,13 @@ public class ExcelHandler {
 		excel.prepareRaport(path2);
 		String message = excel.updateExcel(path);
 		excel.getArrayListBook().clear();
+		excel.getArrayPricesBook().clear();
 		return message;
 		
+	}
+	
+	public String calculateReceipt(){
+		return excel.calculateReceipt();
 	}
 	
 	public String arrayInString(String ISBN1, String path) throws IOException {
@@ -49,10 +59,10 @@ public class ExcelHandler {
 		return message;
 	}
 	
-	public String printReceipt(String ISBN, String path) throws IOException{
+	public String printReceipt(String ISBN, double price, String path) throws IOException{
 		
 	String receipt ="";
-	receipt = excel.printReceipt(excel.getArrayListBook().get(excel.getArrayListBook().size() - 1));
+	receipt = excel.printReceipt(excel.getArrayListBook().get(excel.getArrayListBook().size() - 1), price);
 	return receipt;
 	
 	}

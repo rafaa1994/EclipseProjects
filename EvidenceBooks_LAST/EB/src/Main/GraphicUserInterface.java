@@ -44,6 +44,8 @@ import java.awt.SystemColor;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class GraphicUserInterface {
 
@@ -56,6 +58,7 @@ public class GraphicUserInterface {
 	String path = "";
 	String path2 = "";
 	ExcelHandler excelHandler = new ExcelHandler();
+	private JTextField textPrice_1;
 
 	public static void main(String[] args) {
 
@@ -273,6 +276,7 @@ public class GraphicUserInterface {
 		sl_panel.putConstraint(SpringLayout.SOUTH, textArea, 0,
 				SpringLayout.SOUTH, lblSOWA);
 
+		
 		btnSprawdz.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				excelHandler.clearArrayListBook();
@@ -527,148 +531,295 @@ public class GraphicUserInterface {
 
 		});
 		mnNarzdzia.add(mntmWycennik);
+		
+				JPanel panel_1 = new JPanel();
+				panel_1.setBackground(new Color(255, 255, 255));
+				tabbedPane.addTab("Sprzeda\u017C", null, panel_1, null);
+				SpringLayout sl_panel_1 = new SpringLayout();
+				panel_1.setLayout(sl_panel_1);
+				
+						final JTextField textISBN_2 = new JTextField();
+						sl_panel_1.putConstraint(SpringLayout.WEST, textISBN_2, 115,
+								SpringLayout.WEST, panel_1);
+						sl_panel_1.putConstraint(SpringLayout.SOUTH, textISBN_2, -491, SpringLayout.SOUTH, panel_1);
+						
+								textISBN_2.setFont(new Font("Segoe UI Light", Font.PLAIN, 18));
+								textISBN_2.setBorder(new LineBorder(new Color(0, 102, 204)));
+								textISBN_2.addMouseListener(new MouseAdapter() {
+									@Override
+									public void mouseEntered(MouseEvent arg0) {
+										textISBN_2.setBorder(new LineBorder(new Color(0, 0, 0)));
+									}
 
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(new Color(255, 255, 255));
-		tabbedPane.addTab("Sprzeda\u017C", null, panel_1, null);
-		SpringLayout sl_panel_1 = new SpringLayout();
-		panel_1.setLayout(sl_panel_1);
+									@Override
+									public void mouseExited(MouseEvent arg0) {
+										textISBN_2.setBorder(new LineBorder(new Color(0, 102, 204)));
+									}
+								});
+								panel_1.add(textISBN_2);
+								
+										JLabel lblISBN_2 = new JLabel("Kod ISBN:");
+										sl_panel_1.putConstraint(SpringLayout.NORTH, lblISBN_2, 0, SpringLayout.NORTH, textISBN_2);
+										lblISBN_2.setForeground(new Color(0, 102, 255));
+										lblISBN_2.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 20));
+										panel_1.add(lblISBN_2);
+										
+												JLabel lblSOWA_2 = new JLabel("");
+												sl_panel_1.putConstraint(SpringLayout.WEST, lblISBN_2, 0, SpringLayout.WEST, lblSOWA_2);
+												sl_panel_1.putConstraint(SpringLayout.NORTH, lblSOWA_2, -167,
+														SpringLayout.SOUTH, panel_1);
+												sl_panel_1.putConstraint(SpringLayout.WEST, lblSOWA_2, 10,
+														SpringLayout.WEST, panel_1);
+												sl_panel_1.putConstraint(SpringLayout.SOUTH, lblSOWA_2, -10,
+														SpringLayout.SOUTH, panel_1);
+												lblSOWA_2.setIcon(new ImageIcon(img));
+												panel_1.add(lblSOWA_2);
+												
+														JButton btnOk = new JButton("OK");
+														sl_panel_1.putConstraint(SpringLayout.NORTH, btnOk, 173, SpringLayout.NORTH, panel_1);
+														btnOk.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 14));
+														btnOk.setBackground(SystemColor.control);
+														panel_1.add(btnOk);
+														
+																final JButton btnPOTWIERDZ = new JButton("POTWIERD\u0179");
+																sl_panel_1.putConstraint(SpringLayout.NORTH, btnPOTWIERDZ, 592,
+																		SpringLayout.NORTH, panel_1);
+																sl_panel_1.putConstraint(SpringLayout.WEST, btnPOTWIERDZ, -127,
+																		SpringLayout.EAST, panel_1);
+																sl_panel_1.putConstraint(SpringLayout.SOUTH, btnPOTWIERDZ, -20,
+																		SpringLayout.SOUTH, panel_1);
+																
+																		btnPOTWIERDZ.setEnabled(false);
+																		sl_panel_1.putConstraint(SpringLayout.EAST, btnPOTWIERDZ, -10,
+																				SpringLayout.EAST, panel_1);
+																		btnPOTWIERDZ.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN,
+																				14));
+																		btnPOTWIERDZ.setBackground(SystemColor.control);
+																		panel_1.add(btnPOTWIERDZ);
+																		
+																				JLabel lblParagon = new JLabel("Informacje:");
+																				lblParagon.setForeground(new Color(0, 102, 255));
+																				lblParagon
+																						.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 20));
+																				panel_1.add(lblParagon);
+																				
+																						JButton btnSUMA = new JButton("Podsumuj");
+																						sl_panel_1.putConstraint(SpringLayout.SOUTH, btnSUMA, -6,
+																								SpringLayout.NORTH, btnPOTWIERDZ);
+																						sl_panel_1.putConstraint(SpringLayout.EAST, btnSUMA, 0,
+																								SpringLayout.EAST, btnPOTWIERDZ);
+																						btnSUMA.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 14));
+																						btnSUMA.setBackground(SystemColor.control);
+																						panel_1.add(btnSUMA);
+																						
+																								JButton btnAnuluj = new JButton("Anuluj");
+																								sl_panel_1.putConstraint(SpringLayout.NORTH, btnAnuluj, 0,
+																										SpringLayout.NORTH, btnSUMA);
+																								sl_panel_1.putConstraint(SpringLayout.EAST, btnAnuluj, -6,
+																										SpringLayout.WEST, btnSUMA);
+																								btnAnuluj.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 14));
+																								btnAnuluj.setBackground(SystemColor.control);
+																								panel_1.add(btnAnuluj);
+																								
+																										JScrollPane scrollPane = new JScrollPane();
+																										sl_panel_1.putConstraint(SpringLayout.EAST, btnOk, -103, SpringLayout.WEST, scrollPane);
+																										sl_panel_1.putConstraint(SpringLayout.NORTH, scrollPane, 125,
+																												SpringLayout.NORTH, panel_1);
+																										sl_panel_1.putConstraint(SpringLayout.SOUTH, lblParagon, -6, SpringLayout.NORTH, scrollPane);
+																										sl_panel_1.putConstraint(SpringLayout.SOUTH, scrollPane, -19,
+																												SpringLayout.NORTH, btnSUMA);
+																										sl_panel_1.putConstraint(SpringLayout.EAST, lblSOWA_2, -373,
+																												SpringLayout.WEST, scrollPane);
+																										sl_panel_1.putConstraint(SpringLayout.WEST, lblParagon, 0,
+																												SpringLayout.WEST, scrollPane);
+																										sl_panel_1.putConstraint(SpringLayout.EAST, textISBN_2, -103,
+																												SpringLayout.WEST, scrollPane);
+																										sl_panel_1.putConstraint(SpringLayout.WEST, scrollPane, 551,
+																												SpringLayout.WEST, panel_1);
+																										sl_panel_1.putConstraint(SpringLayout.EAST, scrollPane, -10,
+																												SpringLayout.EAST, panel_1);
+																										scrollPane.setBorder(new LineBorder(new Color(0, 102, 204)));
+																										scrollPane.addMouseListener(new MouseAdapter() {
+																											@Override
+																											public void mouseEntered(MouseEvent arg0) {
+																												scrollPane.setBorder(new LineBorder(new Color(0, 0, 0)));
+																											}
 
-		final JTextField textISBN_2 = new JTextField();
-		sl_panel_1.putConstraint(SpringLayout.WEST, textISBN_2, 10,
-				SpringLayout.WEST, panel_1);
+																											@Override
+																											public void mouseExited(MouseEvent arg0) {
+																												scrollPane.setBorder(new LineBorder(new Color(0, 102, 204)));
+																											}
+																										});
+																										panel_1.add(scrollPane);
+																										
+																												final JTextArea textArea_1 = new JTextArea();
+																												scrollPane.setViewportView(textArea_1);
+																												sl_panel_1.putConstraint(SpringLayout.NORTH, textArea_1, 189,
+																														SpringLayout.NORTH, textISBN_2);
+																												sl_panel_1.putConstraint(SpringLayout.WEST, textArea_1, 79,
+																														SpringLayout.EAST, lblSOWA_2);
+																												sl_panel_1.putConstraint(SpringLayout.SOUTH, textArea_1, -37,
+																														SpringLayout.SOUTH, panel_1);
+																												textArea_1.setFont(new Font("Segoe UI Light", Font.PLAIN, 18));
+																												textArea_1.setEditable(false);
+																												textArea_1.setBackground(Color.WHITE);
+																												sl_panel_1.putConstraint(SpringLayout.EAST, textArea_1, -340,
+																														SpringLayout.EAST, btnPOTWIERDZ);
+																												
+																												textPrice_1 = new JTextField();
+																												sl_panel_1.putConstraint(SpringLayout.WEST, btnOk, 142, SpringLayout.EAST, textPrice_1);
+																												sl_panel_1.putConstraint(SpringLayout.NORTH, textPrice_1, -2, SpringLayout.NORTH, btnOk);
+																												sl_panel_1.putConstraint(SpringLayout.WEST, textPrice_1, 0, SpringLayout.WEST, textISBN_2);
+																												sl_panel_1.putConstraint(SpringLayout.EAST, textPrice_1, 216, SpringLayout.WEST, panel_1);
+																												textPrice_1.setFont(new Font("Segoe UI Light", Font.PLAIN, 18));
+																												textPrice_1.setBorder(new LineBorder(new Color(0, 102, 204)));
+																												panel_1.add(textPrice_1);
+																												
+																												textPrice_1.addMouseListener(new MouseAdapter() {
+																													@Override
+																													public void mouseEntered(MouseEvent arg0) {
+																														textPrice_1.setBorder(new LineBorder(new Color(0, 0, 0)));
+																													}
 
-		textISBN_2.setFont(new Font("Segoe UI Light", Font.PLAIN, 18));
-		textISBN_2.setBorder(new LineBorder(new Color(0, 102, 204)));
-		textISBN_2.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent arg0) {
-				textISBN_2.setBorder(new LineBorder(new Color(0, 0, 0)));
-			}
+																													@Override
+																													public void mouseExited(MouseEvent arg0) {
+																														textPrice_1.setBorder(new LineBorder(new Color(0, 102, 204)));
+																													}
+																												});
+																												
+																												JLabel Cena_lbl = new JLabel("Cena:");
+																												sl_panel_1.putConstraint(SpringLayout.NORTH, Cena_lbl, -2, SpringLayout.NORTH, btnOk);
+																												sl_panel_1.putConstraint(SpringLayout.EAST, Cena_lbl, 0, SpringLayout.EAST, lblISBN_2);
+																												Cena_lbl.setForeground(new Color(0, 102, 255));
+																												Cena_lbl.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 20));
+																												panel_1.add(Cena_lbl);
+																												
+																												textISBN_2.addActionListener(new ActionListener() {
+																													public void actionPerformed(ActionEvent e) {
+																														try {
+																															String ISBN = textISBN_2.getText();
+																															double bookPrice = Double.parseDouble(textPrice_1.getText());
+																															excelHandler.searchBookOnlyByISBN(ISBN, path);
+																															if (excelHandler.getChanges()) {
+																																textArea_1.append(excelHandler.printReceipt(ISBN, bookPrice, path));
+																															} else
+																																JOptionPane
+																																		.showMessageDialog(
+																																				null,
+																																				"Brak takiego ISBN w bazie lub Ÿle podany.\nDodaj najpierw ksi¹¿kê do arkusza ewidencyjnego!");
+																															textISBN_2.setText(null);
+																										
+																														} catch (FileNotFoundException ex) {
+																										
+																															JOptionPane
+																																	.showMessageDialog(null,
+																																			"Brak pliku Ÿród³owego lub plik jest otwarty w innym programie!");
+																															ex.printStackTrace();
+																										
+																														} catch (NumberFormatException ex) {
+																															ex.printStackTrace();
+																															textISBN_2.setText(null);
+																															JOptionPane
+																																	.showMessageDialog(null,
+																																			"B³¹d!\n\nSprawdŸ czy wszystkie dane zosta³y podane poprawnie !");
+																														} catch (Exception exa) {
+																															exa.printStackTrace();
+																														}
+																										
+																													}
+																												});
+																												
+																												
+																														btnOk.addActionListener(new ActionListener() {
+																															public void actionPerformed(ActionEvent arg0) {
+																												
+																																try {
+																																	String ISBN = textISBN_2.getText();
+																																	double bookPrice = Double.parseDouble(textPrice_1.getText());
+																																	excelHandler.searchBookOnlyByISBN(ISBN, path);
+																																	if (excelHandler.getChanges()) {
+																																		textArea_1.append(excelHandler.printReceipt(ISBN, bookPrice, path));
+																																	} else
+																																		JOptionPane
+																																				.showMessageDialog(
+																																						null,
+																																						"Brak takiego ISBN w bazie lub Ÿle podany.\nDodaj najpierw ksi¹¿kê do arkusza ewidencyjnego!");
+																																	textISBN_2.setText(null);
+																												
+																																} catch (FileNotFoundException ex) {
+																												
+																																	JOptionPane
+																																			.showMessageDialog(null,
+																																					"Brak pliku Ÿród³owego lub plik jest otwarty w innym programie!");
+																																	ex.printStackTrace();
+																												
+																																} catch (NumberFormatException e) {
+																																	e.printStackTrace();
+																																	textISBN_2.setText(null);
+																																	JOptionPane
+																																			.showMessageDialog(null,
+																																					"B³¹d!\n\nSprawdŸ czy wszystkie dane zosta³y podane poprawnie !");
+																																} catch (Exception e) {
+																																	e.printStackTrace();
+																																}
+																												
+																															}
+																														});
+																														
+																																btnSUMA.addActionListener(new ActionListener() {
+																																	public void actionPerformed(ActionEvent arg0) {
+																														
+																																		if (!excelHandler.getArrayListBook().isEmpty()){
+																																			btnPOTWIERDZ.setEnabled(true);
+																																			textArea_1.append(excelHandler.calculateReceipt());
+																																		}
+																																			
+																																	}
+																														
+																																});
+																																
+																																		btnAnuluj.addActionListener(new ActionListener() {
+																																			public void actionPerformed(ActionEvent arg0) {
+																																
+																																				textArea_1.setText(null);
+																																				btnPOTWIERDZ.setEnabled(false);
+																																				excelHandler.clearArrayListBook();
+																																				excelHandler.clearArrayPricesBook();
+																																				JOptionPane.showMessageDialog(null, "Anulowano.");
+																																
+																																			}
+																																		});
+																																		btnPOTWIERDZ.addActionListener(new ActionListener() {
+																																			public void actionPerformed(ActionEvent arg0) {
+																																				try {
+																																					String message = excelHandler.confirmSell(path, path2);
+																																					textArea_1.setText(null);
+																																					btnPOTWIERDZ.setEnabled(false);
+																																					JOptionPane.showMessageDialog(null, message);
 
-			@Override
-			public void mouseExited(MouseEvent arg0) {
-				textISBN_2.setBorder(new LineBorder(new Color(0, 102, 204)));
-			}
-		});
-		panel_1.add(textISBN_2);
+																																				} catch (FileNotFoundException ex) {
 
-		JLabel lblISBN_2 = new JLabel("Kod ISBN:");
-		sl_panel_1.putConstraint(SpringLayout.WEST, lblISBN_2, 10,
-				SpringLayout.WEST, panel_1);
-		sl_panel_1.putConstraint(SpringLayout.SOUTH, lblISBN_2, -6,
-				SpringLayout.NORTH, textISBN_2);
-		lblISBN_2.setForeground(new Color(0, 102, 255));
-		lblISBN_2.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 20));
-		panel_1.add(lblISBN_2);
+																																					JOptionPane
+																																							.showMessageDialog(null,
+																																									"Brak pliku Ÿród³owego lub plik jest otwarty w innym programie!");
+																																					ex.printStackTrace();
 
-		JLabel lblSOWA_2 = new JLabel("");
-		sl_panel_1.putConstraint(SpringLayout.NORTH, lblSOWA_2, -167,
-				SpringLayout.SOUTH, panel_1);
-		sl_panel_1.putConstraint(SpringLayout.WEST, lblSOWA_2, 10,
-				SpringLayout.WEST, panel_1);
-		sl_panel_1.putConstraint(SpringLayout.SOUTH, lblSOWA_2, -10,
-				SpringLayout.SOUTH, panel_1);
-		lblSOWA_2.setIcon(new ImageIcon(img));
-		panel_1.add(lblSOWA_2);
+																																				} catch (IndexOutOfBoundsException a) {
+																																					JOptionPane
+																																							.showMessageDialog(null,
+																																									"Do pola kodu ISBN wprowadzano b³êdne dane np. tytu³y ksi¹¿ek!");
+																																					textArea_1.setText(null);
+																																					excelHandler.clearArrayListBook();
+																																					excelHandler.clearArrayPricesBook();
+																																					btnPOTWIERDZ.setEnabled(false);
+																																					a.printStackTrace();
+																																				} catch (IOException e) {
 
-		JButton btnOk = new JButton("OK");
-		sl_panel_1.putConstraint(SpringLayout.NORTH, btnOk, 160,
-				SpringLayout.NORTH, panel_1);
-		sl_panel_1.putConstraint(SpringLayout.SOUTH, textISBN_2, -8,
-				SpringLayout.NORTH, btnOk);
-		sl_panel_1.putConstraint(SpringLayout.WEST, btnOk, 358,
-				SpringLayout.WEST, panel_1);
-		sl_panel_1.putConstraint(SpringLayout.EAST, btnOk, 0,
-				SpringLayout.EAST, textISBN_2);
-		btnOk.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 14));
-		btnOk.setBackground(SystemColor.control);
-		panel_1.add(btnOk);
+																																					e.printStackTrace();
+																																				}
 
-		final JButton btnPOTWIERDZ = new JButton("POTWIERD\u0179");
-		sl_panel_1.putConstraint(SpringLayout.NORTH, btnPOTWIERDZ, 592,
-				SpringLayout.NORTH, panel_1);
-		sl_panel_1.putConstraint(SpringLayout.WEST, btnPOTWIERDZ, -127,
-				SpringLayout.EAST, panel_1);
-		sl_panel_1.putConstraint(SpringLayout.SOUTH, btnPOTWIERDZ, -20,
-				SpringLayout.SOUTH, panel_1);
-
-		btnPOTWIERDZ.setEnabled(false);
-		sl_panel_1.putConstraint(SpringLayout.EAST, btnPOTWIERDZ, -10,
-				SpringLayout.EAST, panel_1);
-		btnPOTWIERDZ.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN,
-				14));
-		btnPOTWIERDZ.setBackground(SystemColor.control);
-		panel_1.add(btnPOTWIERDZ);
-
-		JLabel lblParagon = new JLabel("Informacje:");
-		sl_panel_1.putConstraint(SpringLayout.NORTH, lblParagon, 0,
-				SpringLayout.NORTH, lblISBN_2);
-		lblParagon.setForeground(new Color(0, 102, 255));
-		lblParagon
-				.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 20));
-		panel_1.add(lblParagon);
-
-		JButton btnSUMA = new JButton("Podsumuj");
-		sl_panel_1.putConstraint(SpringLayout.SOUTH, btnSUMA, -6,
-				SpringLayout.NORTH, btnPOTWIERDZ);
-		sl_panel_1.putConstraint(SpringLayout.EAST, btnSUMA, 0,
-				SpringLayout.EAST, btnPOTWIERDZ);
-		btnSUMA.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 14));
-		btnSUMA.setBackground(SystemColor.control);
-		panel_1.add(btnSUMA);
-
-		JButton btnAnuluj = new JButton("Anuluj");
-		sl_panel_1.putConstraint(SpringLayout.NORTH, btnAnuluj, 0,
-				SpringLayout.NORTH, btnSUMA);
-		sl_panel_1.putConstraint(SpringLayout.EAST, btnAnuluj, -6,
-				SpringLayout.WEST, btnSUMA);
-		btnAnuluj.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 14));
-		btnAnuluj.setBackground(SystemColor.control);
-		panel_1.add(btnAnuluj);
-
-		JScrollPane scrollPane = new JScrollPane();
-		sl_panel_1.putConstraint(SpringLayout.NORTH, scrollPane, 6,
-				SpringLayout.SOUTH, lblParagon);
-		sl_panel_1.putConstraint(SpringLayout.SOUTH, scrollPane, -19,
-				SpringLayout.NORTH, btnSUMA);
-		sl_panel_1.putConstraint(SpringLayout.EAST, lblSOWA_2, -373,
-				SpringLayout.WEST, scrollPane);
-		sl_panel_1.putConstraint(SpringLayout.WEST, lblParagon, 0,
-				SpringLayout.WEST, scrollPane);
-		sl_panel_1.putConstraint(SpringLayout.EAST, textISBN_2, -103,
-				SpringLayout.WEST, scrollPane);
-		sl_panel_1.putConstraint(SpringLayout.WEST, scrollPane, 551,
-				SpringLayout.WEST, panel_1);
-		sl_panel_1.putConstraint(SpringLayout.EAST, scrollPane, -10,
-				SpringLayout.EAST, panel_1);
-		scrollPane.setBorder(new LineBorder(new Color(0, 102, 204)));
-		scrollPane.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent arg0) {
-				scrollPane.setBorder(new LineBorder(new Color(0, 0, 0)));
-			}
-
-			@Override
-			public void mouseExited(MouseEvent arg0) {
-				scrollPane.setBorder(new LineBorder(new Color(0, 102, 204)));
-			}
-		});
-		panel_1.add(scrollPane);
-
-		final JTextArea textArea_1 = new JTextArea();
-		scrollPane.setViewportView(textArea_1);
-		sl_panel_1.putConstraint(SpringLayout.NORTH, textArea_1, 189,
-				SpringLayout.NORTH, textISBN_2);
-		sl_panel_1.putConstraint(SpringLayout.WEST, textArea_1, 79,
-				SpringLayout.EAST, lblSOWA_2);
-		sl_panel_1.putConstraint(SpringLayout.SOUTH, textArea_1, -37,
-				SpringLayout.SOUTH, panel_1);
-		textArea_1.setFont(new Font("Segoe UI Light", Font.PLAIN, 18));
-		textArea_1.setEditable(false);
-		textArea_1.setBackground(Color.WHITE);
-		sl_panel_1.putConstraint(SpringLayout.EAST, textArea_1, -340,
-				SpringLayout.EAST, btnPOTWIERDZ);
+																																			}
+																																		});
 
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(new Color(255, 255, 255));
@@ -705,6 +856,8 @@ public class GraphicUserInterface {
 			}
 		});
 		panel_2.add(textISBN_3);
+		
+		
 
 		final JTextField textPrice = new JTextField();
 		sl_panel_2.putConstraint(SpringLayout.WEST, textPrice, 649,
@@ -1075,6 +1228,46 @@ public class GraphicUserInterface {
 				excelHandler.clearArrayListBook();
 			}
 		});
+		
+		textISBN_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				excelHandler.clearArrayListBook();
+
+				try {
+					excelHandler.searchBook(textISBN_3.getText(), path);
+					if (!excelHandler.getArrayListBook().isEmpty()) {
+
+						textSchool.setText(excelHandler.getArrayListBook()
+								.get(0).getSchool());
+						textPrice.setText(String.valueOf(excelHandler
+								.getArrayListBook().get(0).getPrice()));
+						textAuthors.setText(excelHandler.getArrayListBook()
+								.get(0).getAuthors());
+						textAmount.setText(null);
+						textPublisher.setText(excelHandler.getArrayListBook()
+								.get(0).getPublisher());
+						textLevel.setText(excelHandler.getArrayListBook()
+								.get(0).getLevel());
+						textTitle.setText(excelHandler.getArrayListBook()
+								.get(0).getTitle());
+						textPermission.setText(excelHandler.getArrayListBook().get(0).getPersmission_NR());
+						lblComm.setText("Ile chcesz dodaæ ?");
+					} else
+						JOptionPane.showMessageDialog(null,
+								"Brak danych o zadanym kryterium");
+
+				} catch (FileNotFoundException e1) {
+					e1.printStackTrace();
+					JOptionPane
+							.showMessageDialog(null,
+									"Brak pliku Ÿród³owego lub plik jest otwarty w innym programie!");
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+				excelHandler.clearArrayListBook();
+			}
+		});
+		
 		btnSprawdz2
 				.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 14));
 		btnSprawdz2.setBackground(SystemColor.control);
@@ -1089,93 +1282,6 @@ public class GraphicUserInterface {
 				SpringLayout.SOUTH, panel_2);
 		label_2.setIcon(new ImageIcon(img));
 		panel_2.add(label_2);
-
-		btnOk.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-
-				try {
-					String ISBN = textISBN_2.getText();
-					excelHandler.searchBookOnlyByISBN(ISBN, path);
-					if (excelHandler.getChanges()) {
-						textArea_1.append(excelHandler.printReceipt(ISBN, path));
-					} else
-						JOptionPane
-								.showMessageDialog(
-										null,
-										"Brak takiego ISBN w bazie lub Ÿle podany.\nDodaj najpierw ksi¹¿kê do arkusza ewidencyjnego!");
-					textISBN_2.setText(null);
-
-				} catch (FileNotFoundException ex) {
-
-					JOptionPane
-							.showMessageDialog(null,
-									"Brak pliku Ÿród³owego lub plik jest otwarty w innym programie!");
-					ex.printStackTrace();
-
-				} catch (NumberFormatException e) {
-					e.printStackTrace();
-					textISBN_2.setText(null);
-					JOptionPane
-							.showMessageDialog(null,
-									"B³¹d!\n\nSprawdŸ czy wszystkie dane zosta³y podane poprawnie !");
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-
-			}
-		});
-
-		btnSUMA.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-
-				if (!excelHandler.getArrayListBook().isEmpty())
-					btnPOTWIERDZ.setEnabled(true);
-			}
-
-		});
-
-		btnAnuluj.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-
-				textArea_1.setText(null);
-				btnPOTWIERDZ.setEnabled(false);
-				excelHandler.clearArrayListBook();
-
-				JOptionPane.showMessageDialog(null, "Anulowano.");
-
-			}
-		});
-		btnPOTWIERDZ.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				try {
-					String message = excelHandler.confirmSell(path, path2);
-					textArea_1.setText(null);
-					btnPOTWIERDZ.setEnabled(false);
-					JOptionPane.showMessageDialog(null, message);
-
-				} catch (FileNotFoundException ex) {
-
-					JOptionPane
-							.showMessageDialog(null,
-									"Brak pliku Ÿród³owego lub plik jest otwarty w innym programie!");
-					ex.printStackTrace();
-
-				} catch (IndexOutOfBoundsException a) {
-					JOptionPane
-							.showMessageDialog(null,
-									"Do pola kodu ISBN wprowadzano b³êdne dane np. tytu³y ksi¹¿ek!");
-					textArea_1.setText(null);
-					excelHandler.clearArrayListBook();
-					// prices.clear();
-					btnPOTWIERDZ.setEnabled(false);
-					a.printStackTrace();
-				} catch (IOException e) {
-
-					e.printStackTrace();
-				}
-
-			}
-		});
 
 		frame.setBounds(100, 100, 1100, 725);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
