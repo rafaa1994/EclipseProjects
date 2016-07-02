@@ -30,6 +30,7 @@ import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.IllegalFormatException;
 
@@ -41,7 +42,9 @@ import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
 import java.awt.SystemColor;
+
 import javax.swing.border.EmptyBorder;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.KeyAdapter;
@@ -322,27 +325,27 @@ public class GraphicUserInterface {
 			}
 		});
 
-		textISBN_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				excelHandler.clearArrayListBook();
-				textArea.setText(null);
-				try {
-
-					String str = excelHandler.arrayInString(
-							textISBN_1.getText(), path);
-					textArea.setText(str);
-					textISBN_1.setText(null);
-				} catch (FileNotFoundException e1) {
-					e1.printStackTrace();
-					JOptionPane
-							.showMessageDialog(null,
-									"Brak pliku Ÿród³owego lub plik jest otwarty w innym programie!");
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
-				excelHandler.clearArrayListBook();
-			}
-		});
+//		textISBN_1.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				excelHandler.clearArrayListBook();
+//				textArea.setText(null);
+//				try {
+//
+//					String str = excelHandler.arrayInString(
+//							textISBN_1.getText(), path);
+//					textArea.setText(str);
+//					textISBN_1.setText(null);
+//				} catch (FileNotFoundException e1) {
+//					e1.printStackTrace();
+//					JOptionPane
+//							.showMessageDialog(null,
+//									"Brak pliku Ÿród³owego lub plik jest otwarty w innym programie!");
+//				} catch (Exception e1) {
+//					e1.printStackTrace();
+//				}
+//				excelHandler.clearArrayListBook();
+//			}
+//		});
 
 		textWyszukaj.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -816,7 +819,8 @@ public class GraphicUserInterface {
 																																				} catch (IOException e) {
 
 																																					e.printStackTrace();
-																																				}
+																																				} 
+																																				
 
 																																			}
 																																		});
@@ -860,10 +864,7 @@ public class GraphicUserInterface {
 		
 
 		final JTextField textPrice = new JTextField();
-		sl_panel_2.putConstraint(SpringLayout.WEST, textPrice, 649,
-				SpringLayout.WEST, panel_2);
-		sl_panel_2.putConstraint(SpringLayout.EAST, textPrice, -369,
-				SpringLayout.EAST, panel_2);
+		sl_panel_2.putConstraint(SpringLayout.EAST, textPrice, -369, SpringLayout.EAST, panel_2);
 		textPrice.setFont(new Font("Segoe UI Light", Font.PLAIN, 18));
 		textPrice.setBorder(new LineBorder(new Color(0, 102, 204)));
 		textPrice.addMouseListener(new MouseAdapter() {
@@ -880,12 +881,9 @@ public class GraphicUserInterface {
 		panel_2.add(textPrice);
 
 		JLabel label_1 = new JLabel("Cena:");
-		sl_panel_2.putConstraint(SpringLayout.SOUTH, label_1, -234,
-				SpringLayout.SOUTH, panel_2);
-		sl_panel_2.putConstraint(SpringLayout.NORTH, textPrice, 6,
-				SpringLayout.SOUTH, label_1);
-		sl_panel_2.putConstraint(SpringLayout.WEST, label_1, 0,
-				SpringLayout.WEST, textPrice);
+		sl_panel_2.putConstraint(SpringLayout.SOUTH, label_1, -234, SpringLayout.SOUTH, panel_2);
+		sl_panel_2.putConstraint(SpringLayout.NORTH, textPrice, 6, SpringLayout.SOUTH, label_1);
+		sl_panel_2.putConstraint(SpringLayout.WEST, textPrice, 0, SpringLayout.WEST, label_1);
 		label_1.setForeground(new Color(0, 102, 255));
 		label_1.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 20));
 		panel_2.add(label_1);
@@ -956,21 +954,14 @@ public class GraphicUserInterface {
 		panel_2.add(textAuthors);
 
 		JLabel lblIlo = new JLabel("Ilo\u015B\u0107:");
-		sl_panel_2.putConstraint(SpringLayout.NORTH, lblIlo, 23,
-				SpringLayout.SOUTH, textPrice);
-		sl_panel_2.putConstraint(SpringLayout.WEST, lblIlo, 0,
-				SpringLayout.WEST, textPrice);
+		sl_panel_2.putConstraint(SpringLayout.SOUTH, lblIlo, -151, SpringLayout.SOUTH, panel_2);
 		lblIlo.setForeground(new Color(0, 102, 255));
 		lblIlo.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 20));
 		panel_2.add(lblIlo);
 
 		final JTextField textAmount = new JTextField();
-		sl_panel_2.putConstraint(SpringLayout.NORTH, textAmount, 6,
-				SpringLayout.SOUTH, lblIlo);
-		sl_panel_2.putConstraint(SpringLayout.WEST, textAmount, 0,
-				SpringLayout.WEST, textPrice);
-		sl_panel_2.putConstraint(SpringLayout.EAST, textAmount, 380,
-				SpringLayout.EAST, textTitle);
+		sl_panel_2.putConstraint(SpringLayout.NORTH, textAmount, 6, SpringLayout.SOUTH, lblIlo);
+		sl_panel_2.putConstraint(SpringLayout.EAST, textAmount, -385, SpringLayout.EAST, panel_2);
 		textAmount.setFont(new Font("Segoe UI Light", Font.PLAIN, 18));
 		textAmount.setBorder(new LineBorder(new Color(0, 102, 204)));
 		textAmount.addMouseListener(new MouseAdapter() {
@@ -989,8 +980,7 @@ public class GraphicUserInterface {
 		JLabel lblWydawnictwo = new JLabel("Wydawnictwo:");
 		sl_panel_2.putConstraint(SpringLayout.NORTH, lblWydawnictwo, 0,
 				SpringLayout.NORTH, lblAutorzy);
-		sl_panel_2.putConstraint(SpringLayout.WEST, lblWydawnictwo, 0,
-				SpringLayout.WEST, textPrice);
+		sl_panel_2.putConstraint(SpringLayout.WEST, lblWydawnictwo, 517, SpringLayout.EAST, lblAutorzy);
 		lblWydawnictwo.setForeground(new Color(0, 102, 255));
 		lblWydawnictwo.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN,
 				20));
@@ -999,10 +989,8 @@ public class GraphicUserInterface {
 		final JTextField textPublisher = new JTextField();
 		sl_panel_2.putConstraint(SpringLayout.NORTH, textPublisher, 0,
 				SpringLayout.NORTH, textAuthors);
-		sl_panel_2.putConstraint(SpringLayout.WEST, textPublisher, 0,
-				SpringLayout.WEST, textPrice);
-		sl_panel_2.putConstraint(SpringLayout.EAST, textPublisher, -141,
-				SpringLayout.EAST, panel_2);
+		sl_panel_2.putConstraint(SpringLayout.WEST, textPublisher, 325, SpringLayout.EAST, textAuthors);
+		sl_panel_2.putConstraint(SpringLayout.EAST, textPublisher, -141, SpringLayout.EAST, panel_2);
 		textPublisher.setFont(new Font("Segoe UI Light", Font.PLAIN, 18));
 		textPublisher.setBorder(new LineBorder(new Color(0, 102, 204)));
 		textPublisher.addMouseListener(new MouseAdapter() {
@@ -1021,10 +1009,8 @@ public class GraphicUserInterface {
 		final JTextField textLevel = new JTextField();
 		sl_panel_2.putConstraint(SpringLayout.NORTH, textLevel, 0,
 				SpringLayout.NORTH, textISBN_3);
-		sl_panel_2.putConstraint(SpringLayout.WEST, textLevel, 0,
-				SpringLayout.WEST, textPrice);
-		sl_panel_2.putConstraint(SpringLayout.EAST, textLevel, -43,
-				SpringLayout.EAST, panel_2);
+		sl_panel_2.putConstraint(SpringLayout.WEST, textLevel, 191, SpringLayout.EAST, textISBN_3);
+		sl_panel_2.putConstraint(SpringLayout.EAST, textLevel, -43, SpringLayout.EAST, panel_2);
 		textLevel.setFont(new Font("Segoe UI Light", Font.PLAIN, 18));
 		textLevel.setBorder(new LineBorder(new Color(0, 102, 204)));
 		textLevel.addMouseListener(new MouseAdapter() {
@@ -1043,8 +1029,7 @@ public class GraphicUserInterface {
 		JLabel lblPoziom = new JLabel("Poziom zaawansowania:");
 		sl_panel_2.putConstraint(SpringLayout.NORTH, lblPoziom, 0,
 				SpringLayout.NORTH, label);
-		sl_panel_2.putConstraint(SpringLayout.WEST, lblPoziom, 0,
-				SpringLayout.WEST, textPrice);
+		sl_panel_2.putConstraint(SpringLayout.WEST, lblPoziom, 516, SpringLayout.EAST, label);
 		lblPoziom.setForeground(new Color(0, 102, 255));
 		lblPoziom.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 20));
 		panel_2.add(lblPoziom);
@@ -1052,10 +1037,8 @@ public class GraphicUserInterface {
 		final JTextField textSchool = new JTextField();
 		sl_panel_2.putConstraint(SpringLayout.NORTH, textSchool, 0,
 				SpringLayout.NORTH, textTitle);
-		sl_panel_2.putConstraint(SpringLayout.WEST, textSchool, 0,
-				SpringLayout.WEST, textPrice);
-		sl_panel_2.putConstraint(SpringLayout.EAST, textSchool, -97,
-				SpringLayout.EAST, panel_2);
+		sl_panel_2.putConstraint(SpringLayout.WEST, textSchool, 325, SpringLayout.EAST, textTitle);
+		sl_panel_2.putConstraint(SpringLayout.EAST, textSchool, -97, SpringLayout.EAST, panel_2);
 		textSchool.setFont(new Font("Segoe UI Light", Font.PLAIN, 18));
 		textSchool.setBorder(new LineBorder(new Color(0, 102, 204)));
 		textSchool.addMouseListener(new MouseAdapter() {
@@ -1074,28 +1057,22 @@ public class GraphicUserInterface {
 		JLabel lblSzkoa = new JLabel("Szko\u0142a:");
 		sl_panel_2.putConstraint(SpringLayout.NORTH, lblSzkoa, 0,
 				SpringLayout.NORTH, lblTytu);
-		sl_panel_2.putConstraint(SpringLayout.WEST, lblSzkoa, 0,
-				SpringLayout.WEST, textPrice);
+		sl_panel_2.putConstraint(SpringLayout.WEST, lblSzkoa, 556, SpringLayout.EAST, lblTytu);
 		lblSzkoa.setForeground(new Color(0, 102, 255));
 		lblSzkoa.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 20));
 		panel_2.add(lblSzkoa);
 
 		final JLabel lblComm = new JLabel("");
-		sl_panel_2.putConstraint(SpringLayout.NORTH, lblComm, 133,
-				SpringLayout.SOUTH, textAuthors);
-		sl_panel_2.putConstraint(SpringLayout.WEST, lblComm, 22,
-				SpringLayout.EAST, textAmount);
-		sl_panel_2.putConstraint(SpringLayout.SOUTH, lblComm, 0,
-				SpringLayout.SOUTH, textAmount);
-		sl_panel_2.putConstraint(SpringLayout.EAST, lblComm, 234,
-				SpringLayout.WEST, textPrice);
+		sl_panel_2.putConstraint(SpringLayout.NORTH, lblComm, 133, SpringLayout.SOUTH, textPublisher);
+		sl_panel_2.putConstraint(SpringLayout.WEST, lblComm, 24, SpringLayout.EAST, textAmount);
+		sl_panel_2.putConstraint(SpringLayout.SOUTH, lblComm, 0, SpringLayout.SOUTH, textAmount);
+		sl_panel_2.putConstraint(SpringLayout.EAST, lblComm, -204, SpringLayout.EAST, panel_2);
 		lblComm.setForeground(new Color(0, 102, 255));
 		lblComm.setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 15));
 		panel_2.add(lblComm);
 
 		JLabel lblPermission = new JLabel("Nr dopuszczenia:");
-		sl_panel_2.putConstraint(SpringLayout.NORTH, lblPermission, 0,
-				SpringLayout.NORTH, label_1);
+		sl_panel_2.putConstraint(SpringLayout.WEST, label_1, 448, SpringLayout.EAST, lblPermission);
 		sl_panel_2.putConstraint(SpringLayout.WEST, lblPermission, 0,
 				SpringLayout.WEST, label);
 		lblPermission.setForeground(new Color(0, 102, 255));
@@ -1104,12 +1081,10 @@ public class GraphicUserInterface {
 		panel_2.add(lblPermission);
 
 		final JTextField textPermission = new JTextField();
-		sl_panel_2.putConstraint(SpringLayout.NORTH, textPermission, 0,
-				SpringLayout.NORTH, textPrice);
+		sl_panel_2.putConstraint(SpringLayout.NORTH, textPermission, 415, SpringLayout.NORTH, panel_2);
+		sl_panel_2.putConstraint(SpringLayout.SOUTH, lblPermission, -6, SpringLayout.NORTH, textPermission);
 		sl_panel_2.putConstraint(SpringLayout.WEST, textPermission, 0,
 				SpringLayout.WEST, label);
-		sl_panel_2.putConstraint(SpringLayout.SOUTH, textPermission, 0,
-				SpringLayout.SOUTH, textPrice);
 		sl_panel_2.putConstraint(SpringLayout.EAST, textPermission, 0,
 				SpringLayout.EAST, textTitle);
 		textPermission.setFont(new Font("Segoe UI Light", Font.PLAIN, 18));
@@ -1274,6 +1249,9 @@ public class GraphicUserInterface {
 		panel_2.add(btnSprawdz2);
 
 		JLabel label_2 = new JLabel("");
+		sl_panel_2.putConstraint(SpringLayout.WEST, textAmount, 479, SpringLayout.EAST, label_2);
+		sl_panel_2.putConstraint(SpringLayout.SOUTH, textPermission, -34, SpringLayout.NORTH, label_2);
+		sl_panel_2.putConstraint(SpringLayout.WEST, lblIlo, 479, SpringLayout.EAST, label_2);
 		sl_panel_2.putConstraint(SpringLayout.NORTH, label_2, -167,
 				SpringLayout.SOUTH, panel_2);
 		sl_panel_2.putConstraint(SpringLayout.WEST, label_2, 10,
